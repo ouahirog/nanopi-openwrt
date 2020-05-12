@@ -8,6 +8,10 @@ on:
       - '.github/workflows/r2s_lean.yml'
   schedule:
     - cron: '10 09 * * *'
+      
+env:
+  SSH_ACTIONS: true
+  TZ: Asia/Shanghai
 
 jobs:
 
@@ -22,7 +26,23 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: master
+        
+      - name: SSH connection to Actions
+        uses: P3TERX/debugger-action@master
+        if: env.SSH_ACTIONS == 'true'
+      
+      - name: Prepare artifact
+        run: |
+          mkdir ./bin/targets/
+          mkdir ./bin/targets/20200513
+          find ./bin/targets/ -type d -name "packages" | xargs rm -rf {}
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: OpenWrt_firmware
+          path: ./bin/targets/
+      
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
