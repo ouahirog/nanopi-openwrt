@@ -29,8 +29,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.sec_token }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: 自动发布 ${{ github_ref }}
+          tag_name: ${{ secrets.sec_token }}
+          release_name: 自动发布 ${{ secrets.GITHUB_TOKEN }}
           body: |
             Changes in this Release
             - First Change
