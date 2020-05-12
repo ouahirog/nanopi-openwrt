@@ -12,7 +12,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    if: github.repository == 'klever1988/nanopi-openwrt'
+    name: Build OpenWrt and release
 
     steps:
 
@@ -92,6 +92,11 @@ jobs:
           CONFIG_PACKAGE_luci-theme-netgear=y
           CONFIG_PACKAGE_luci-app-unblockmusic=y
           CONFIG_PACKAGE_kmod-rtl8xxxu=y
+          CONFIG_PACKAGE_kmod-ipsec=y
+          CONFIG_PACKAGE_kmod-ipsec4=y
+          CONFIG_PACKAGE_kmod-ipsec6=y
+          CONFIG_PACKAGE_kmod-iptunnel4=y
+          CONFIG_PACKAGE_kmod-iptunnel6=y
           CONFIG_UnblockNeteaseMusic_Go=y
           CONFIG_UnblockNeteaseMusic_NodeJS=y
           CONFIG_PACKAGE_luci-app-passwall=y
