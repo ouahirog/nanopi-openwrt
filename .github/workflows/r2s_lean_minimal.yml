@@ -1,4 +1,4 @@
-name: r2s Lean版openwrt minimal ouhaiorg 2020-05-12
+name: r2s Lean版openwrt minimal ouhaiorg
 
 on:
   push:
