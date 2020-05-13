@@ -60,6 +60,10 @@ jobs:
           release_tag="R2S-3328-$(date +%Y-%m-%d)"
           echo "##[set-output name=release_tag;]$release_tag"
 
+      - name: SSH connection to Actions
+        uses: P3TERX/debugger-action@master
+        if: env.SSH_ACTIONS == 'true'
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
