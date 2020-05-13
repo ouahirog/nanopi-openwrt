@@ -1,0 +1,25 @@
+on:
+#  push:
+#    branches:
+#      - master     
+  watch:
+    types: started
+    
+env:
+  SSH_ACTIONS: true
+  TZ: Asia/Shanghai
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build OpenWrt and release
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          ref: master    
+
+      - name: SSH connection to Actions
+        uses: P3TERX/debugger-action@master
+        if: env.SSH_ACTIONS == 'true'
