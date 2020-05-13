@@ -54,7 +54,6 @@ jobs:
       - name: Assemble Artifact
         id: assemble_artifact
         run: |
-          cd ~
           pwd
           ls
           rm -rf ./artifact/
