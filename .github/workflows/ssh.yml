@@ -1,5 +1,3 @@
-name: Workflows test
-
 on:
 #  push:
 #    branches:
