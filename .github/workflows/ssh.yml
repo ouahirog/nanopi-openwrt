@@ -36,10 +36,6 @@ jobs:
           gzip friendlywrt-rk3328/bin/*.img
 
       - name: Assemble Artifact
-#        id: assemble_artifact
         run: |
           rm -rf ./artifact/
           mkdir -p ./artifact/
-          mv friendlywrt-rk3328/*img* ./artifact/
-#          cp friendlywrt-rk3328/friendlywrt/.config ./artifact/
-          zip -r artifact.zip ./artifact/
