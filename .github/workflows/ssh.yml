@@ -51,9 +51,11 @@ jobs:
         id: assemble_artifact
         run: |
           cd ~
+          pwd
+          ls
           rm -rf ./artifact/
           mkdir -p ./artifact/
-          mv ./friendlywrt-rk3328/bin/*img* ./artifact/
+          mv friendlywrt-rk3328/bin/*img* ./artifact/
           zip -r artifact.zip ./artifact/
           release_tag="R2S-3328-$(date +%Y-%m-%d)"
           echo "##[set-output name=release_tag;]$release_tag"
