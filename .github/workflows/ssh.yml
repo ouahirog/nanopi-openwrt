@@ -65,7 +65,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.assemble_artifact.outputs.release_tag }}
+#          tag_name: ${{ steps.assemble_artifact.outputs.release_tag }}
+          tag_name: ${{ secrets.ouhai }}
           release_name: 自动发布 ${{ steps.assemble_artifact.outputs.release_tag }}
           draft: false
           prerelease: false
