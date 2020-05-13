@@ -34,8 +34,3 @@ jobs:
       - name: Zip Files
         run: |
           gzip friendlywrt-rk3328/bin/*.img
-
-      - name: Assemble Artifact
-        run: |
-          rm -rf ./artifact/
-          mkdir -p ./artifact/
