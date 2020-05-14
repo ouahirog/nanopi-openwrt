@@ -100,7 +100,7 @@ jobs:
           CONFIG_PACKAGE_kmod-ipt-ipsec=y
           CONFIG_PACKAGE_kmod-pppol2tp=y
           CONFIG_PACKAGE_kmod-gre=y
-          CONFIG_PACKAGE_iptalbes-mod-ipsec=y
+          CONFIG_PACKAGE_iptables-mod-ipsec=y
           CONFIG_UnblockNeteaseMusic_Go=y
           CONFIG_UnblockNeteaseMusic_NodeJS=y
           CONFIG_PACKAGE_luci-app-passwall=y
@@ -238,3 +238,7 @@ jobs:
           asset_path: ./artifact.zip
           asset_name: ${{ steps.assemble_artifact.outputs.release_tag }}-ROM.zip
           asset_content_type: application/zip
+          
+      - name: SSH connection to Actions
+        uses: P3TERX/debugger-action@master
+        if: env.SSH_ACTIONS == 'true'
