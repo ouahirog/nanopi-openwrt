@@ -36,6 +36,10 @@ jobs:
           curl https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bionic/master/install.sh  | sed '/#/d' | sed 's/\\//g' | sed 's/exit 0//g' | sed 's/sudo apt -y install//g' | sed 's/sudo apt-get -y install//g' | sed 's/:i386//g' | xargs sudo apt-get -y --no-install-recommends install
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android/sdk
 
+      - name: SSH connection to Actions
+        uses: P3TERX/debugger-action@master
+        if: env.SSH_ACTIONS == 'true'
+
       - name: Prepare Files
         run: |
           mkdir ./friendlywrt-rk3328/
