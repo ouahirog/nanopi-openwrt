@@ -97,6 +97,10 @@ jobs:
           CONFIG_PACKAGE_kmod-ipsec6=y
           CONFIG_PACKAGE_kmod-iptunnel4=y
           CONFIG_PACKAGE_kmod-iptunnel6=y
+          CONFIG_PACKAGE_kmod-ipt-ipsec=y
+          CONFIG_PACKAGE_kmod-pppol2tp=y
+          CONFIG_PACKAGE_kmod-gre=y
+          CONFIG_PACKAGE_iptalbes-mod-ipsec=y
           CONFIG_UnblockNeteaseMusic_Go=y
           CONFIG_UnblockNeteaseMusic_NodeJS=y
           CONFIG_PACKAGE_luci-app-passwall=y
@@ -218,7 +222,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ouhai }}
         with:
           tag_name: ${{ steps.assemble_artifact.outputs.release_tag }}
           release_name: 自动发布 ${{ steps.assemble_artifact.outputs.release_tag }}
@@ -228,7 +232,7 @@ jobs:
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ouhai }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
           asset_path: ./artifact.zip
