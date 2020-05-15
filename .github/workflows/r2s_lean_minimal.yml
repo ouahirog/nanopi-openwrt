@@ -74,24 +74,26 @@ jobs:
           CONFIG_LIBSODIUM_MINIMAL=y
           CONFIG_PACKAGE_ddns-scripts_aliyun=y
           CONFIG_PACKAGE_ddns-scripts_cloudflare.com-v4=y
-          CONFIG_PACKAGE_luci-app-ssr-plus=y
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_DNS2SOCKS=y
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Redsocks2=y
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Simple_obfs=y
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray_plugin=y
-          CONFIG_PACKAGE_luci-app-ssrserver-python=y
+          #CONFIG_PACKAGE_luci-app-ssr-plus=y
+          #CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_DNS2SOCKS=y
+          #CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Redsocks2=y
+          #CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
+          #CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Simple_obfs=y
+          #CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
+          #CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
+          #CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray_plugin=y
+          #CONFIG_PACKAGE_luci-app-ssrserver-python=y
           CONFIG_PACKAGE_luci-app-uhttpd=y
           CONFIG_PACKAGE_luci-app-unblockmusic=y
-          CONFIG_PACKAGE_luci-app-v2ray-server=y
-          CONFIG_PACKAGE_luci-app-vssr=y
+          #CONFIG_PACKAGE_luci-app-v2ray-server=y
+          #CONFIG_PACKAGE_luci-app-vssr=y
           CONFIG_PACKAGE_luci-theme-argon=y
           CONFIG_PACKAGE_luci-theme-material=y
           CONFIG_PACKAGE_luci-theme-netgear=y
           CONFIG_PACKAGE_luci-app-unblockmusic=y
+          CONFIG_PACKAGE_luci-app-samba4=y
           CONFIG_PACKAGE_kmod-rtl8xxxu=y
+          CONFIG_PACKAGE_libatomic=y
           CONFIG_PACKAGE_kmod-ipsec=y
           CONFIG_PACKAGE_kmod-ipsec4=y
           CONFIG_PACKAGE_kmod-ipsec6=y
@@ -218,6 +220,9 @@ jobs:
         with:
           name: OpenWrt_firmware
           path: ./artifact/
+      - name: SSH connection to Actions
+        uses: P3TERX/debugger-action@master
+        if: env.SSH_ACTIONS == 'true'
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -238,7 +243,3 @@ jobs:
           asset_path: ./artifact.zip
           asset_name: ${{ steps.assemble_artifact.outputs.release_tag }}-ROM.zip
           asset_content_type: application/zip
-          
-      - name: SSH connection to Actions
-        uses: P3TERX/debugger-action@master
-        if: env.SSH_ACTIONS == 'true'
